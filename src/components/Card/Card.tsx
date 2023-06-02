@@ -14,7 +14,7 @@ interface MediaCardProps {
 
 const MediaCard: React.FC<MediaCardProps> = ({title, description, btnTitle}) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: 1 }}>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/contemplative-reptile.jpg"

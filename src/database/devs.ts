@@ -5,23 +5,85 @@ export const devs = [
                 id: 1,
                 name: 'Assis Junior',
                 age: 36,
-                description: ''
-            }
-        ],
-        stack: [
+                description: 'Aluno da 12ª edição do curso de Desenvolvimento Web Fullstack da Growdev',
+                stack: [
+                    {
+                        stackName: 'FullStack'
+                    }
+                ],
+                hardSkills: [
+                    {
+                        technologies: ['HTML', 'CSS', 'Javascript', 'Typescript', 'Bootstrap', 'React', 'Redux', 'NodeJs', 'Express']
+                    }
+                ],
+                softSkills: [
+                    {
+                        skills: []
+                    }
+                ]
+            },
             {
-                stackName: 'FullStack'
-            }
-        ],
-        hardSkills: [
+                id: 2,
+                name: 'Vitor',
+                age: 22,
+                description: 'Aluno da 12ª edição do curso de Desenvolvimento Web Fullstack da Growdev',
+                stack: [
+                    {
+                        stackName: 'FullStack'
+                    }
+                ],
+                hardSkills: [
+                    {
+                        technologies: ['HTML', 'CSS', 'Javascript', 'Typescript', 'Bootstrap', 'React', 'Redux', 'NodeJs', 'Express']
+                    }
+                ],
+                softSkills: [
+                    {
+                        skills: []
+                    }
+                ]
+            },
             {
-                technologies: ['HTML', 'CSS', 'Javascript', 'Typescript', 'Bootstrap', 'React', 'Redux', 'NodeJs', 'Express']
-            }
-        ]
-        ,
-        softSkills: [
+                id: 3,
+                name: 'David Lustosa',
+                age: 22,
+                description: 'Aluno da 12ª edição do curso de Desenvolvimento Web Fullstack da Growdev',
+                stack: [
+                    {
+                        stackName: 'FullStack'
+                    }
+                ],
+                hardSkills: [
+                    {
+                        technologies: ['HTML', 'CSS', 'Javascript', 'Typescript', 'Bootstrap', 'React', 'Redux', 'NodeJs', 'Express']
+                    }
+                ],
+                softSkills: [
+                    {
+                        skills: []
+                    }
+                ]
+            },
             {
-                skills: []
+                id: 4,
+                name: 'Pablo',
+                age: 24,
+                description: 'Aluno da 12ª edição do curso de Desenvolvimento Web Fullstack da Growdev',
+                stack: [
+                    {
+                        stackName: 'FullStack'
+                    }
+                ],
+                hardSkills: [
+                    {
+                        technologies: ['HTML', 'CSS', 'Javascript', 'Typescript', 'Bootstrap', 'React', 'Redux', 'NodeJs', 'Express']
+                    }
+                ],
+                softSkills: [
+                    {
+                        skills: []
+                    }
+                ]
             }
         ]
     }
