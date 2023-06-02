@@ -10,7 +10,9 @@ interface ListDevSectionProps {
 const ListDevSection: React.FC<ListDevSectionProps> = ({ title, subTitle }) => {
 
   const listDevs = useMemo(() => {
-    return devs.map(d => d.devs).toString();
+    return devs.map(d => d.devs.map(
+      d => d.name
+    ));
   },[devs]);
 
   return (
