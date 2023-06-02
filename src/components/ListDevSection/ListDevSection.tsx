@@ -19,8 +19,9 @@ const ListDevSection: React.FC<ListDevSectionProps> = ({ title, subTitle }) => {
       <Grid  item xs={12}>
         <Typography variant='h4' textAlign={'center'}>{title}</Typography>
         <Typography variant='body1' textAlign={'center'}>{subTitle}</Typography>
-
-        {listDevs}
+        <Box sx={{marginTop: 3}}>
+          {listDevs}
+        </Box>
       </Grid>
     </Grid>
     </React.Fragment>
