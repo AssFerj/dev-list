@@ -17,7 +17,7 @@ const ListDevSection: React.FC<ListDevSectionProps> = ({ title, subTitle }) => {
       d => {
         return (
           <React.Fragment key={d.id}>
-            <MediaCard title={d.name} description={d.description} btnTitle='Ver Perfil'/>        
+            <MediaCard title={d.name} description={d.description} image={d.foto} altImage={d.name} btnTitle='Ver Perfil'/>        
           </React.Fragment>
         );
       }

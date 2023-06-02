@@ -10,15 +10,17 @@ interface MediaCardProps {
     title: string
     description: string
     btnTitle: string
+    image: string
+    altImage: string
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({title, description, btnTitle}) => {
+const MediaCard: React.FC<MediaCardProps> = ({title, description, btnTitle, image, altImage}) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 1 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        image={image}
+        title={altImage}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
