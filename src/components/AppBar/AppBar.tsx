@@ -26,8 +26,8 @@ export default function MenuAppBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, position: 'absolute', top: '1.5rem', zIndex: 1, width: '90%' }}>
-      <AppBar position="static" sx={{ borderRadius: '.5rem' }}>
+
+      <AppBar position="static">
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu">
             <TaskIcon />
@@ -78,6 +78,6 @@ export default function MenuAppBar() {
           )}
         </Toolbar>
       </AppBar>
-    </Box>
+
   );
 }
