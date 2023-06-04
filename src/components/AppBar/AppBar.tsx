@@ -12,28 +12,47 @@ import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
 import { selectAll } from '../../store/modules/usersSlice';
 import { useMemo } from 'react';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
+import { persistor } from '../../store/store';
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const logedUser = useAppSelector(state => state.userReducer);
-  const navigate = useNavigate();
   const UsersRedux = useAppSelector(selectAll);
   const findUser = UsersRedux.find(dev => dev.email === logedUser.email);
-
+  const navigate = useNavigate();
+  
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
+    persistor.purge();
     navigate('/');
   };
-
   const infoUser = useMemo(() => {
     if(findUser){
-      return <Typography variant='body1'>{findUser.name}</Typography>;
-    };
+      return (
+        <>
+          <Typography variant="body1" mr={1}>
+                Olá!
+              </Typography>
+              <Typography variant='body1'>{findUser.name}</Typography>
+              <Avatar
+                alt={findUser?.name}
+                src={findUser?.foto}
+                sx={{ marginLeft: 1, cursor: 'pointer' }}
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+              />
+        </>
+      );
+    }
+    return <Button type='button' variant='outlined' color='inherit' onClick={()=>navigate('/login')}>Entrar</Button>;
+    
   },[findUser]);
 
   return (
@@ -48,19 +67,7 @@ export default function MenuAppBar() {
           </Typography>
           {auth && (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Typography variant="body1" mr={1}>
-                Olá!
-              </Typography>
               {infoUser}
-              <Avatar
-                alt={findUser?.name}
-                src={findUser?.foto}
-                sx={{ marginLeft: 1, cursor: 'pointer' }}
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-              />
               <Menu
                 sx={{ mt: 7, ml: 2 }}
                 id="menu-appbar"

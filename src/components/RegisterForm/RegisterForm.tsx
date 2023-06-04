@@ -49,7 +49,7 @@ export default function Registerform() {
   
   const handleSubmit = () => {
     dispatch(addUser({ ...user }));
-    navigate('/home');
+    navigate('/');
   };
 
 
@@ -201,7 +201,7 @@ export default function Registerform() {
       <Grid container justifyContent="flex-end">
         <Grid item>
           Já tem uma conta?{' '}
-          <Link href="/" variant="body2">
+          <Link href="/login" variant="body2">
             Acesse
           </Link>
         </Grid>

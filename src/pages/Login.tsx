@@ -36,7 +36,7 @@ const Login: React.FC = () => {
               <TaskIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Task-In
+              Dev-List
             </Typography>
             <LoginForm />
           </Box>

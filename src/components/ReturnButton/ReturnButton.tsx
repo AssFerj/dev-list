@@ -13,7 +13,7 @@ const ReturnButton: React.FC<ReturnButtonProps> = ({ text }) => {
     <React.Fragment>
         <Button 
           sx={{marginTop: 1}} 
-          onClick={()=>navigate('/home')}>
+          onClick={()=>navigate('/')}>
             <KeyboardDoubleArrowLeftIcon sx={{marginRight: 1}} />{text}</Button>
     </React.Fragment>
   );

@@ -49,7 +49,7 @@ export default function LoginForm() {
   const handleAddLogedUser = (log: LogedUserType) => {
     if (findUser) {
       dispatch(logedUser(log));
-      navigate('/home');
+      navigate('/');
     } else {
       setOpen(true);
     }

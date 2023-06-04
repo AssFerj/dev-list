@@ -1,19 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import HeroSection from '../components/HeroSection/HeroSection';
 import ListDevSection from '../components/ListDevSection/ListDevSection';
-import { useAppSelector } from '../store/hooks';
-import { selectAll } from '../store/modules/usersSlice';
-import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
-  const UsersRedux = useAppSelector(selectAll);
-  const navigate = useNavigate();
-
-  useEffect(()=>{
-    if(!UsersRedux.length){
-      navigate('/');
-    }
-  },[UsersRedux]);
 
   return (
     <React.Fragment>
