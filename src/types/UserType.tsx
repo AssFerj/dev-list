@@ -1,13 +1,17 @@
-import TaskType from './TaskType';
 
 type UserType = {
-  firstName: string;
-  lastName: string;
+  id: string;
   email: string;
   password: string;
   confirmPassword: string;
-  remember?: boolean;
-  tasks: TaskType[];
+  name: string;
+  foto?: string;
+  banner?: string;
+  age: number;
+  description: string;
+  stack: string[];
+  hardSkills?: string[];
+  softSkills?: string[];
 };
 
 export default UserType;

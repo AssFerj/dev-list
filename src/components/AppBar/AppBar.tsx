@@ -4,18 +4,23 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import TaskIcon from '@mui/icons-material/Task';
+import DvrIcon from '@mui/icons-material/Dvr';
 import { useAppSelector } from '../../store/hooks';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
+import { selectAll } from '../../store/modules/usersSlice';
+import { useMemo } from 'react';
+import { Avatar } from '@mui/material';
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const logedUser = useAppSelector(state => state.userReducer);
   const navigate = useNavigate();
+  const UsersRedux = useAppSelector(selectAll);
+  const findUser = UsersRedux.find(dev => dev.email === logedUser.email);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -25,37 +30,37 @@ export default function MenuAppBar() {
     navigate('/');
   };
 
+  const infoUser = useMemo(() => {
+    if(findUser){
+      return <Typography variant='body1'>{findUser.name}</Typography>;
+    };
+  },[findUser]);
+
   return (
 
       <AppBar position="static">
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu">
-            <TaskIcon />
+            <DvrIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Task-In
+            Dev List
           </Typography>
           {auth && (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Typography variant="body1" mr={1}>
                 Olá!
               </Typography>
-              <Typography variant="body1" fontWeight={600} mr={1}>
-                {logedUser.firstName}
-              </Typography>
-              <Typography variant="body1" fontWeight={600} mr={1}>
-                {logedUser.lastName}
-              </Typography>
-              <IconButton
-                size="large"
+              {infoUser}
+              <Avatar
+                alt={findUser?.name}
+                src={findUser?.foto}
+                sx={{ marginLeft: 1, cursor: 'pointer' }}
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+              />
               <Menu
                 sx={{ mt: 7, ml: 2 }}
                 id="menu-appbar"

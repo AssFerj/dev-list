@@ -10,11 +10,12 @@ interface MediaCardProps {
     title: string
     description: string
     btnTitle: string
-    image: string
+    image?: string
     altImage: string
+    onClickFunction?: ()=> void;
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({title, description, btnTitle, image, altImage}) => {
+const MediaCard: React.FC<MediaCardProps> = ({title, description, btnTitle, image, altImage, onClickFunction}) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 1 }}>
       <CardMedia
@@ -31,7 +32,7 @@ const MediaCard: React.FC<MediaCardProps> = ({title, description, btnTitle, imag
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">{btnTitle}</Button>
+        <Button size="small" onClick={onClickFunction}>{btnTitle}</Button>
         {/* <Button size="small">Learn More</Button> */}
       </CardActions>
     </Card>

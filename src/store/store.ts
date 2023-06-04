@@ -5,8 +5,8 @@ import storage from 'redux-persist/lib/storage';
 import rootReducer from './modules/rootReducer';
 
 const persistConfig = {
-  key: 'tasks-app',
-  version: 2.0,
+  key: 'dev-list',
+  version: 1.0,
   storage
 };
 

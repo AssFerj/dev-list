@@ -5,10 +5,13 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
-import UserType from '../../types/UserType';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../store/modules/usersSlice';
 import { useNavigate } from 'react-router-dom';
+import { MenuItem } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
+import { selectStack } from '../../utils/selectStack';
+import UserType from '../../types/UserType';
 
 export default function Registerform() {
   const [user, setUser] = useState<UserType>({} as UserType);
@@ -18,8 +21,6 @@ export default function Registerform() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    user.firstName === '' ||
-    user.lastName === '' ||
     user.email === '' ||
     user.password === '' ||
     user.confirmPassword === ''
@@ -36,51 +37,56 @@ export default function Registerform() {
     }
   }, [user]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
-  };
+  useEffect(()=>{
+    handleClear();
+  },[]);
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, id: uuidv4(), [event.target.name]: event.target.value });
+    console.log(user);
+    
+  };
+  
   const handleSubmit = () => {
     dispatch(addUser({ ...user }));
-    handleClear();
-    navigate('/');
+    navigate('/home');
   };
 
+
   const handleClear = () => {
-    setUser({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '', tasks: [] });
+    setUser({ id: '', foto: '', banner: '', name: '', email: '', password: '', confirmPassword: '', age: 0, description: '', stack: [] });
   };
 
   return (
     <Box component="form" noValidate sx={{ mt: 3 }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
-            autoComplete="given-name"
             required
             fullWidth
             type="text"
-            id="firstName"
-            name="firstName"
+            id="foto"
+            name="foto"
+            label="Link da Foto"
+            autoFocus
+            value={user.foto}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            fullWidth
+            type="text"
+            id="name"
+            name="name"
             label="Nome"
             autoFocus
-            value={user.firstName}
+            value={user.name}
             onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            fullWidth
-            id="lastName"
-            type="text"
-            label="Sobrenome"
-            name="lastName"
-            autoComplete="family-name"
-            value={user.lastName}
-            onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
           <TextField
             required
             fullWidth
@@ -90,6 +96,66 @@ export default function Registerform() {
             name="email"
             autoComplete="email"
             value={user.email}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            fullWidth
+            id="age"
+            type="age"
+            label="Idade"
+            name="age"
+            autoComplete="age"
+            value={Number(user.age)}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            fullWidth
+            id="stack"
+            select
+            label="Stack"
+            name="stack"
+            autoComplete="stack"
+            value={user.stack}
+            onChange={handleChange}
+          >
+            {selectStack.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            fullWidth
+            id="description"
+            type="description"
+            label="Descrição"
+            name="description"
+            multiline
+            rows={4}
+            autoComplete="description"
+            value={user.description}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            fullWidth
+            type="text"
+            id="banner"
+            name="banner"
+            label="Link do banner do perfil"
+            autoFocus
+            value={user.banner}
             onChange={handleChange}
           />
         </Grid>

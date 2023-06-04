@@ -3,8 +3,7 @@ import LogedUserType from '../../types/LogedUserType';
 
 const initialState: LogedUserType = {
   email: '',
-  password: '',
-  remember: false
+  password: ''
 };
 
 const userSlice = createSlice({

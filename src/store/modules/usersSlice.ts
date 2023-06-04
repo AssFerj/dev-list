@@ -3,7 +3,7 @@ import UserType from '../../types/UserType';
 import { RootState } from '../store';
 
 const adapter = createEntityAdapter<UserType>({
-  selectId: item => item.email
+  selectId: item => item.id
 });
 
 export const { selectAll, selectById: selectByEmail } = adapter.getSelectors((state: RootState) => state.usersReducer);

@@ -89,10 +89,10 @@ export default function LoginForm() {
           autoComplete="current-password"
           onChange={handleUserPassword}
         />
-        <FormControlLabel
+        {/* <FormControlLabel
           control={<Checkbox checked={logedChecked} color="primary" onChange={handleUserRemember} required />}
           label="Lembrar acesso*"
-        />
+        /> */}
         <Button
           type="button"
           fullWidth
@@ -100,11 +100,8 @@ export default function LoginForm() {
           sx={{ mt: 3, mb: 2 }}
           onClick={() =>
             handleAddLogedUser({
-              firstName: findUser?.firstName,
-              lastName: findUser?.lastName,
               email: logedEmail,
-              password: logedPassword,
-              remember: logedChecked
+              password: logedPassword
             })
           }
         >
